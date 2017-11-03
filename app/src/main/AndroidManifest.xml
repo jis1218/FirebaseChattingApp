@@ -20,13 +20,12 @@
         <activity android:name=".SignUpActivity" />
         <activity
             android:name=".FriendListActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RoomListActivity"
             android:label="@string/title_activity_room_list"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".RoomActivity"></activity>
     </application>
 
 </manifest>
