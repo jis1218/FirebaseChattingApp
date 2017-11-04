@@ -10,9 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.firebasechat.belongtoviewpager.ISenderRecyclerView;
 import com.example.firebasechat.belongtoviewpager.ViewPagerAdapter;
@@ -41,6 +45,7 @@ public class RoomListActivity extends AppCompatActivity implements ISenderRecycl
     DatabaseReference userRef;
     DatabaseReference roomRef;
     RoomListAdapter roomAdapter;
+    Button btnFindID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,12 @@ public class RoomListActivity extends AppCompatActivity implements ISenderRecycl
         setListner();
         setAdapterToPager();
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.sub_menu01, menu);
+        return true;
     }
 
     private void initField(){
@@ -68,6 +79,16 @@ public class RoomListActivity extends AppCompatActivity implements ISenderRecycl
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         editRoomName = (EditText) findViewById(R.id.editRoomName);
+        btnFindID = (Button) findViewById(R.id.btnFindID);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.menu_addFriends :
+                Toast.makeText(getBaseContext(), "하하하", Toast.LENGTH_SHORT).show();
+        }
+        return true;
     }
 
     private void setRoomRecyclerView(){
@@ -132,6 +153,15 @@ public class RoomListActivity extends AppCompatActivity implements ISenderRecycl
             @Override
             public void onClick(View view) {
                 view.setVisibility(View.GONE);
+            }
+        });
+
+        btnFindID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String targetID = editRoomName.getText().toString();
+
             }
         });
 

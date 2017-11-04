@@ -64,7 +64,18 @@
             android:layout_gravity="center"
             android:background="@android:color/background_light"
             android:ems="10"
+            android:hint="id를 넣으세요"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:paddingLeft="20dp" />
+
+        <Button
+            android:id="@+id/btnFindID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="50dp"
+            android:text="찾기" />
+
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>
