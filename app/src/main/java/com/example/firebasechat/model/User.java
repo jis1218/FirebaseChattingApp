@@ -1,5 +1,7 @@
 package com.example.firebasechat.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by 정인섭 on 2017-11-03.
  */
@@ -11,6 +13,8 @@ public class User {
     public String token;
     public String phone_num;
     public String mId;
+    public Friends friends;
+
 
     public User(){
         // default for firebase

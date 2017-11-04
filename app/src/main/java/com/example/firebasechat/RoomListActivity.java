@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 
+import com.example.firebasechat.belongtoviewpager.ISenderRecyclerView;
 import com.example.firebasechat.belongtoviewpager.ViewPagerAdapter;
 import com.example.firebasechat.model.Room;
 import com.example.firebasechat.util.PreferenceUtil;
@@ -26,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class RoomListActivity extends AppCompatActivity implements ISend{
+public class RoomListActivity extends AppCompatActivity implements ISenderRecyclerView{
 
     FrameLayout framePopup;
     Toolbar toolbar;
@@ -40,7 +41,6 @@ public class RoomListActivity extends AppCompatActivity implements ISend{
     DatabaseReference userRef;
     DatabaseReference roomRef;
     RoomListAdapter roomAdapter;
-    RecyclerView roomRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +68,20 @@ public class RoomListActivity extends AppCompatActivity implements ISend{
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         editRoomName = (EditText) findViewById(R.id.editRoomName);
-        roomRecyclerView = (RecyclerView) viewPager.findViewById(R.id.roomRecyclerView);
     }
 
     private void setRoomRecyclerView(){
         roomAdapter = new RoomListAdapter();
-        roomRecyclerView.setAdapter(roomAdapter);
-        roomRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public void sendToFriend() {
+
+    }
+
+    @Override
+    public void sendToRoom() {
+
     }
 
     private void showRoomList(){
@@ -132,7 +139,7 @@ public class RoomListActivity extends AppCompatActivity implements ISend{
     }
 
     private void setAdapterToPager(){
-        adapter = new ViewPagerAdapter(this, this);
+        adapter = new ViewPagerAdapter(this, mAuth);
         viewPager.setAdapter(adapter);
         setRoomRecyclerView();
     }

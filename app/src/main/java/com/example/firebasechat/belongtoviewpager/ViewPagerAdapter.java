@@ -7,6 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.firebasechat.model.Friends;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+
 /**
  * Created by 정인섭 on 2017-11-02.
  */
@@ -15,13 +20,16 @@ public class ViewPagerAdapter extends PagerAdapter {
     FriendsView friendsView;
     RoomView roomView;
     RecyclerView recyclerView;
+    ArrayList<Friends> list = new ArrayList<>();
 
-    public ViewPagerAdapter(Context context, RoomView.ISendRecyclerView iSendRecyclerView) {
-        friendsView = new FriendsView(context);
-        roomView = new RoomView(context, iSendRecyclerView);
+    public ViewPagerAdapter(Context context, FirebaseAuth auth) {
+        friendsView = new FriendsView(context, auth);
+        roomView = new RoomView(context, auth);
     }
 
     private static final int COUNT = 2;
+
+
     @Override
     public int getCount() {
         return COUNT;
